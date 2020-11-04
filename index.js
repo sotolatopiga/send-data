@@ -8,14 +8,16 @@ app.get('/', function (req, res) {
 
 
 app.listen(3000, function () {
-
+    // Nội dung data cần gửi
     data = {
         title: 'A very important message',
-        from: 'Suu',
+        sender: 'Suu',
         to: 'Duong',
     }
 
-  const sendData = () => fetch('http://123.16.6.225:5010/ingest-data', {
+  const url = 'http://123.16.6.225:5010/ingest-data' //IP có thể sẽ thay đổi, khi nào code stable up lên AWS sẽ có IP tĩnh
+
+  const sendData = () => fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
